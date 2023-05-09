@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:trackOmeter.Helpers;assembly=trackOmeter"
+             x:Class="trackOmeter.Views.SubscriptionPage"
+             NavigationPage.HasBackButton="True"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Primary}" Padding="0,16,0,0" Spacing="16">
+            <StackLayout HorizontalOptions="Center">
+                <Button Style="{StaticResource RUHEButton}"
+                        VerticalOptions="Center" 
+                        Text="9.99 USD" 
+                        Command="{Binding UpgradeCommand}"/>
+            </StackLayout>
+            <Frame BackgroundColor="#FF0439B9" Margin="0" Padding="8">
+                <Label Text="Upgrade your account to premium to get UNLIMITED playback and Augmented Reality"
+                       HorizontalTextAlignment="Center"
+                       FontSize="18"/>
+            </Frame>
+            <StackLayout Margin="16,0,16,0">
+                <Label FontSize="16" Text="One time purchase gives you access to all historical data on all your devices"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0" BackgroundColor="Transparent" Padding="0,16,0,16" Margin="0">
+                        <Image Aspect="AspectFit" Source="{helpers:ImageResource trackOmeter.Assets.Images.BadgeFollow.png}" />
+                    </Frame>
+                    <Label Grid.Column="1" FontSize="16" Text="View the location of any device at a specific date and time" VerticalOptions="Center" />
+                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" Padding="0,16,0,16" Margin="0">
+                        <Image Aspect="AspectFit" Source="{helpers:ImageResource trackOmeter.Assets.Images.BadgeFollow.png}" />
+                    </Frame>
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="16" Text="Get 360 degree live view of all your devices" VerticalOptions="Center" />
+                    <Frame Grid.Row="2" Grid.Column="0" BackgroundColor="Transparent" Padding="0,16,0,16" Margin="0">
+                        <Image Aspect="AspectFit" Source="{helpers:ImageResource trackOmeter.Assets.Images.BadgeFollow.png}" />
+                    </Frame>
+                    <Label Grid.Row="2" Grid.Column="1" FontSize="16" Text="Keep track of all your devices at any point in time" VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

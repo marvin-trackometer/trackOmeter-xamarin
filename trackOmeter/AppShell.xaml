@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:trackOmeter.Views"
+       Title="trackOmeter"
+       x:Name="shell"
+       FlyoutBehavior="Disabled"
+       Shell.PresentationMode="Animated"
+       Shell.NavBarHasShadow="True"
+       x:Class="trackOmeter.AppShell">
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary>
+                <Style TargetType="NavigationPage">
+                    <Setter Property="BarBackgroundColor" Value="Black" />
+                </Style>
+            </ResourceDictionary>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+</Shell>

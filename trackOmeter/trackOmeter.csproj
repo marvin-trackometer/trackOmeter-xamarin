@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\BadgeFollow.png" />
+    <None Remove="Assets\Images\GripDown.png" />
+    <None Remove="Assets\Images\GripUp.png" />
+    <None Remove="Assets\Images\IcAddressBook.png" />
+    <None Remove="Assets\Images\IcFieldEdit.png" />
+    <None Remove="Assets\Images\IcShareDevice.png" />
+    <None Remove="Assets\Images\IcShareUri.png" />
+    <None Remove="Assets\Images\IcShareUriNew.png" />
+    <None Remove="Assets\Images\IcStatusBar.png" />
+    <None Remove="Assets\Images\IcUriViews.png" />
+    <None Remove="Assets\Images\Logo.png" />
+    <None Remove="Assets\Images\UriShare.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\BadgeFollow.png" />
+    <EmbeddedResource Include="Assets\Images\GripDown.png" />
+    <EmbeddedResource Include="Assets\Images\GripUp.png" />
+    <EmbeddedResource Include="Assets\Images\IcAddressBook.png" />
+    <EmbeddedResource Include="Assets\Images\IcShareDevice.png" />
+    <EmbeddedResource Include="Assets\Images\IcShareUri.png" />
+    <EmbeddedResource Include="Assets\Images\IcShareUriNew.png" />
+    <EmbeddedResource Include="Assets\Images\IcStatusBar.png" />
+    <EmbeddedResource Include="Assets\Images\IcFieldEdit.png" />
+    <EmbeddedResource Include="Assets\Images\IcUriViews.png" />
+    <EmbeddedResource Include="Assets\Images\Logo.png" />
+    <EmbeddedResource Include="Assets\Images\UriShare.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CardsView" Version="2.8.1" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />  
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2578" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resx\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CreateAccountPage.xaml.cs">
+      <DependentUpon>CreateAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RenameWebLinkPage.xaml.cs">
+      <DependentUpon>RenameWebLinkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SubscriptionPage.xaml.cs">
+      <DependentUpon>SubscriptionPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ShareUriPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RenameDevicePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResetPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ShareDeviceLocationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SubscriptionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

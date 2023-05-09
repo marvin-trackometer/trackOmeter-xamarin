@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="trackOmeter.Views.RenameWebLinkPage"
+             xmlns:controls="clr-namespace:trackOmeter.CustomRenderers"
+             xmlns:resources="clr-namespace:trackOmeter.Resx" 
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="Settings"
+                     Priority="2" 
+                     Command="{Binding SettingCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Help"
+                     Priority="3" 
+                     Command="{Binding HelpCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{StaticResource Primary}">
+            <StackLayout Padding="20,20,20,20" 
+                         Spacing="16">
+                <Label TextColor="White" HorizontalOptions="Start" Text="Enter a new name for the web link:"></Label>
+                <Frame Style="{StaticResource EntryFrame}" Margin="5,0">
+                    <controls:CustomEntry 
+                        x:Name="textWebLink" 
+                        Placeholder="New Web Link" 
+                        Keyboard="Text" 
+                        Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <StackLayout Spacing="16" HorizontalOptions="CenterAndExpand">
+                    <Button Style="{StaticResource RUHEButton}"
+                            VerticalOptions="Center" 
+                            IsEnabled="False"
+                            Text="Save" 
+                            Command="{Binding LoginCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="trackOmeter.Views.CreateAccountPage"
+             xmlns:controls="clr-namespace:trackOmeter.CustomRenderers"
+             xmlns:resources="clr-namespace:trackOmeter.Resx" 
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="Settings"
+                     Priority="2" 
+                     Command="{Binding SettingCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Help"
+                     Priority="3" 
+                     Command="{Binding HelpCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{StaticResource Primary}">
+            <StackLayout Padding="20,20,20,20" 
+                         Spacing="16">
+                <Label TextColor="White" HorizontalOptions="Center" Text="Enter your details to create a trackOmeter account:"></Label>
+                <Frame Style="{StaticResource EntryFrame}">
+                    <controls:CustomEntry 
+                            x:Name="textEmailAddress" 
+                            Placeholder="yourname@example.com" 
+                            Keyboard="Email" 
+                            Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}">
+                    <controls:CustomEntry 
+                            x:Name="textPassword" 
+                            Placeholder="Password (6-15 characters)" 
+                            IsPassword="True" 
+                            Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}">
+                    <controls:CustomEntry 
+                            x:Name="textRepeatPassword" 
+                            Placeholder="Re-enter password" 
+                            IsPassword="True" 
+                            Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <StackLayout Spacing="16" HorizontalOptions="CenterAndExpand">
+                    <Button Style="{StaticResource RUHEButton}"
+                            VerticalOptions="Center" 
+                            Text="{x:Static resources:AppResources.BtnCreateAccount}" 
+                            Command="{Binding LoginCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

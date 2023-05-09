@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="trackOmeter.Views.MainPage"
+             NavigationPage.HasBackButton="False"
+             xmlns:helpers="clr-namespace:trackOmeter.Helpers;assembly=trackOmeter"
+             xmlns:controls="clr-namespace:trackOmeter.CustomRenderers"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="Upgrade"
+                     Priority="2" 
+                     Command="{Binding UpgradeCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="My Account"
+                     Priority="2" 
+                     Command="{Binding MyAccountCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Settings"
+                     Priority="3" 
+                     Command="{Binding SettingsCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Help"
+                     Priority="3" 
+                     Command="{Binding HelpCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Sign Out"
+                     Priority="3" 
+                     Command="{Binding SignOutCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <RelativeLayout Grid.Row="0">
+                <!-- Behind Body content-->
+                <StackLayout VerticalOptions="FillAndExpand" 
+                         HorizontalOptions="FillAndExpand"
+                         RelativeLayout.WidthConstraint=
+                             "{ConstraintExpression Type=RelativeToParent,
+                                                    Property=Width,
+                                                    Factor=1}"
+                         RelativeLayout.HeightConstraint=
+                             "{ConstraintExpression Type=RelativeToParent,
+                                                    Property=Height,
+                                                    Factor=1}">
+                    <maps:Map x:Name="map" ItemsSource="{Binding DeviceLocations}">
+                        <x:Arguments>
+                            <maps:MapSpan>
+                                <x:Arguments>
+                                    <maps:Position>
+                                        <x:Arguments>
+                                            <x:Double>10.31754</x:Double>
+                                            <x:Double>123.9035116</x:Double>
+                                        </x:Arguments>
+                                    </maps:Position>
+                                    <x:Double>0.01</x:Double>
+                                    <x:Double>0.01</x:Double>
+                                </x:Arguments>
+                            </maps:MapSpan>
+                        </x:Arguments>
+                        <maps:Map.ItemTemplate>
+                            <DataTemplate>
+                                <maps:Pin Position="{Binding Position}"
+                                      Label="{Binding Name}" />
+                            </DataTemplate>
+                        </maps:Map.ItemTemplate>
+                    </maps:Map>
+                </StackLayout>
+                <Grid Padding="0,0,0,0" Margin="0,0,0,0" x:Name="slideUpPanel"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90,Constant=0}"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1,Constant=0}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1,Constant=0}">
+                    <Grid.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <!-- Bottom sheet body content-->
+                    <!-- Place any thins you want to display inside the bottom sheet-->
+                    <StackLayout Spacing="0" Padding="0,2,0,0">
+                        <AbsoluteLayout VerticalOptions="FillAndExpand"  
+                                        HorizontalOptions="FillAndExpand">
+                            <StackLayout  BackgroundColor="{StaticResource Primary}"
+                                          Opacity="0.3"
+                                          AbsoluteLayout.LayoutFlags="HeightProportional, WidthProportional"  
+                                          AbsoluteLayout.LayoutBounds="0,0,1,1">
+                            </StackLayout>
+                            <StackLayout  Margin="0,2,0,0"
+                                          Opacity="1"
+                                          HeightRequest="20"
+                                          AbsoluteLayout.LayoutFlags="PositionProportional,XProportional,YProportional" 
+                                          AbsoluteLayout.LayoutBounds="0.5,0.5,40,1000"  >
+                                <Image Aspect="AspectFit" Source="{helpers:ImageResource trackOmeter.Assets.Images.GripUp.png}" />
+                            </StackLayout>
+                            <StackLayout  Margin="0,20,0,0"
+                                          Opacity="1"
+                                          AbsoluteLayout.LayoutFlags="HeightProportional, WidthProportional" 
+                                          AbsoluteLayout.LayoutBounds="0,0,1,1"  >
+                                <StackLayout HeightRequest="90" BackgroundColor="Transparent">
+                                    <controls:CustomPanContainer>
+                                        <ContentView.GestureRecognizers>
+                                            <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                                        </ContentView.GestureRecognizers>
+                                        <controls:CustomHorizontalListView ItemsSource="{Binding HorizontalItems}"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                SelectedItem="{Binding SelectedItem}"
+                                                                ItemWidthRequest="50"
+                                                                ItemHeightRequest="50">
+                                            <controls:CustomHorizontalListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Margin="2">
+                                                        <Frame Padding="2"
+                                                               CornerRadius="100" 
+                                                               BackgroundColor="#BF1373DB">
+                                                            <ImageButton x:Name="deviceImage"
+                                                                         Aspect="AspectFill"
+                                                                         CornerRadius="100"
+                                                                         BackgroundColor="#F7229DF4"
+                                                                         HorizontalOptions="Center"
+                                                                         Padding="8"
+                                                                         BorderWidth="1"
+                                                                         BorderColor="White"
+                                                                         Source="{helpers:ImageResource trackOmeter.Assets.Images.IcStatusBar.png}"/>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </controls:CustomHorizontalListView.ItemTemplate>
+                                        </controls:CustomHorizontalListView>
+                                    </controls:CustomPanContainer>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--Timeline canvass-->
+                            <StackLayout  Margin="0,0,0,0" x:Name="timelineContent"
+                                          Opacity="1"
+                                          BackgroundColor="{StaticResource Primary}"
+                                          AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" 
+                                          AbsoluteLayout.LayoutBounds="0.5,0.5,1,845"  >
+                                <StackLayout HeightRequest="69">
+                                    <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="TODO: Timeline canvass"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--Device properties-->
+                            <StackLayout  x:Name="deviceContent"
+                                          Margin="0,0,0,0"
+                                          Opacity="1"
+                                          BackgroundColor="#F7229DF4"
+                                          AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" 
+                                          AbsoluteLayout.LayoutBounds="0.5,0.5,1,845">
+                                <StackLayout Padding="4" 
+                                             Orientation="Horizontal">
+                                    <Frame HorizontalOptions="Start"
+                                           Padding="5"
+                                           HeightRequest="60"
+                                           WidthRequest="60" 
+                                           CornerRadius="100" 
+                                           BackgroundColor="#BF1373DB">
+                                        <ImageButton
+                                            x:Name="deviceImage"
+                                            Aspect="AspectFill"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            CornerRadius="100"
+                                            BackgroundColor="#F7229DF4"
+                                            HorizontalOptions="Center"
+                                            Padding="8"
+                                            BorderWidth="1"
+                                            BorderColor="White"
+                                            Source="{helpers:ImageResource trackOmeter.Assets.Images.IcStatusBar.png}"
+                                        />
+                                    </Frame>
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Frame HeightRequest="32" 
+                                               Padding="0" 
+                                               Margin="0"
+                                               BackgroundColor="#BF1373DB"
+                                               CornerRadius="0">
+                                            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <AbsoluteLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding RenameDeviceCommand}"/>
+                                                </AbsoluteLayout.GestureRecognizers>
+                                                <Button AbsoluteLayout.LayoutFlags="HeightProportional, WidthProportional"  
+                                                        AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                                                        BackgroundColor="Transparent"/>
+                                                <Label Text="Device name" 
+                                                       AbsoluteLayout.LayoutFlags="PositionProportional"  
+                                                       AbsoluteLayout.LayoutBounds="0.5,0.5,100,25"/>
+                                                <Image AbsoluteLayout.LayoutBounds="1,0.5,25,100"
+                                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                       Source="{helpers:ImageResource trackOmeter.Assets.Images.IcFieldEdit.png}"/>
+                                            </AbsoluteLayout>
+                                        </Frame>
+                                        <Label FontSize="12"  Text="No GPS data available" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="FillAndExpand" 
+                                             HorizontalOptions="FillAndExpand" 
+                                             BackgroundColor="#2FFFFFFF"
+                                             Padding="10">
+                                    <FlexLayout Direction="Row"
+                                                AlignItems="Center"
+                                                JustifyContent="SpaceBetween">
+                                        <Label Margin="5,0,0,0" Text="You are not sharing this device"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <ImageButton Aspect="AspectFill"
+                                                         HeightRequest="50"
+                                                         WidthRequest="50"
+                                                         CornerRadius="100"
+                                                         BackgroundColor="#3F0439B9"
+                                                         HorizontalOptions="Center"
+                                                         Padding="8"
+                                                         Clicked="OnShareUriClicked"
+                                                         Source="{helpers:ImageResource trackOmeter.Assets.Images.IcShareUriNew.png}" />
+                                            <ImageButton Aspect="AspectFill"
+                                                         HeightRequest="50"
+                                                         WidthRequest="50"
+                                                         CornerRadius="100"
+                                                         BackgroundColor="#3F0439B9"
+                                                         HorizontalOptions="Center"
+                                                         Padding="8"
+                                                         Command="{Binding ShareDeviceLocationCommand}"
+                                                         Source="{helpers:ImageResource trackOmeter.Assets.Images.IcShareDevice.png}" />
+                                        </StackLayout>
+                                    </FlexLayout>
+                                    <ListView x:Name="webLinkList" ItemsSource="{Binding WebLinks}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Orientation="Horizontal" Padding="0,5">
+                                                        <Image HorizontalOptions="Start" WidthRequest="25" HeightRequest="25" Source="{helpers:ImageResource trackOmeter.Assets.Images.IcShareUri.png}" />
+                                                        <StackLayout>
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                                                                <Label Text="{Binding Name}" FontSize="Caption"/>
+                                                                <Frame WidthRequest="30" CornerRadius="8" Padding="0" Margin="0" BackgroundColor="#3F0439B9">
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                        <Image HorizontalOptions="Start" HeightRequest="10" WidthRequest="10" Source="{helpers:ImageResource trackOmeter.Assets.Images.IcUriViews.png}" />
+                                                                        <Label Text="0" FontSize="Micro"/>
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                            </StackLayout>
+                                                            <Label Text="{Binding Link}" MaxLines="1" LineBreakMode="TailTruncation" FontSize="Micro"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView> 
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+                        <StackLayout x:Name="slideUpPanelContent" Opacity="1" BackgroundColor="{StaticResource Primary}">
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </RelativeLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

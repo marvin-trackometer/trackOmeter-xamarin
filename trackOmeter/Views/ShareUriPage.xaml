@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:helpers="clr-namespace:trackOmeter.Helpers;assembly=trackOmeter"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="trackOmeter.Views.ShareUriPage">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+        <Frame Padding="15" Margin="50" BackgroundColor="#FF229DF4">
+            <StackLayout BackgroundColor="#FF229DF4">
+                <Label HorizontalOptions="CenterAndExpand" FontAttributes="Bold" Text="New Web Link"/>
+                <Image WidthRequest="60" HeightRequest="60" Aspect="AspectFit" Source="{helpers:ImageResource trackOmeter.Assets.Images.UriShare.png}"/>
+                <Label Text="A web link enables public viewing of a device's current location via a web address (URL).&#10;&#10;Delete the web link to discontinue public access."/>
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                    <Button Text="CANCEL" TextColor="#FFCC00" BackgroundColor="Transparent" Clicked="OnCancelClicked"/>
+                    <Button Text="CREATE" TextColor="#FFCC00" BackgroundColor="Transparent" Clicked="OnCancelClicked"/>
+                </FlexLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:controls="clr-namespace:trackOmeter.CustomRenderers"
+             xmlns:resources="clr-namespace:trackOmeter.Resx" 
+             mc:Ignorable="d"
+             x:Class="trackOmeter.Views.LoginPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="Settings"
+                     Priority="2" 
+                     Command="{Binding SettingsCommand}"/>
+        <ToolbarItem Order="Secondary"
+                     Text="Help"
+                     Priority="3" 
+                     Command="{Binding HelpCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{StaticResource Primary}">
+            <StackLayout Padding="20,20,20,20" 
+                         Spacing="16">
+                <Frame Style="{StaticResource EntryFrame}">
+                    <controls:CustomEntry 
+                        x:Name="textEmailAddress" 
+                        Placeholder="Email address" 
+                        Keyboard="Email" 
+                        Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <Frame Style="{StaticResource EntryFrame}">
+                    <controls:CustomEntry 
+                        x:Name="textPassword" 
+                        Placeholder="Password" 
+                        IsPassword="True" 
+                        Style="{StaticResource RUHETextField}">
+                    </controls:CustomEntry>
+                </Frame>
+                <StackLayout Spacing="16" HorizontalOptions="CenterAndExpand">
+                    <Button Style="{StaticResource RUHEButton}"
+                        VerticalOptions="Center" 
+                        Text="{x:Static resources:AppResources.BtnSignIn}" 
+                        Command="{Binding LoginCommand}"/>
+                    <Button Style="{StaticResource RUHEButton}" 
+                        VerticalOptions="Center" 
+                        Text="{x:Static resources:AppResources.BtnCreateAccount}" 
+                        Command="{Binding CreateAccountCommand}"/>
+                    <Button Style="{StaticResource RUHEButton}" 
+                        VerticalOptions="Center" 
+                        Text="{x:Static resources:AppResources.BtnResetPassword}" 
+                        Command="{Binding ResetPasswordCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="trackOmeter.Views.SettingsPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Primary}" Padding="16,16,16,16" Spacing="26">
+            <StackLayout RadioButtonGroup.SelectedValue="{Binding Selection}"
+                         RadioButtonGroup.GroupName="units">
+                <Label Text="Units:"/>
+                <RadioButton FontSize="Small" Content="Metric" Value="Metric" />
+                <RadioButton FontSize="Small" Content="Imperial" Value="Imperial"/>
+            </StackLayout>
+            <StackLayout RadioButtonGroup.SelectedValue="{Binding Selection}"
+                         RadioButtonGroup.GroupName="samplingRate">
+                <Label Text="GPS Sampling Rate:"/>
+                <RadioButton FontSize="Small" IsEnabled="False" Content="1 minute (upgrade required)" Value="1" />
+                <RadioButton FontSize="Small" IsEnabled="False" Content="5 minutes (upgrade required)" Value="5"/>
+                <RadioButton FontSize="Small" Content="15 minutes (longer battery life)" Value="15"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="About:"/>
+                <StackLayout Padding="10,0,0,0">
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Version"/>
+                        <Label Text="1.2.6"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Build"/>
+                        <Label Text="9/16/16 17:27"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Server"/>
+                        <Label Text="gps.trackometer.net"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Secure"/>
+                        <Label Text="Yes"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Accelerometer"/>
+                        <Label Text="Yes"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Compass"/>
+                        <Label Text="Yes"/>
+                    </FlexLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Status:"/>
+                <StackLayout Padding="10,0,0,0">
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Last GPS sampe:"/>
+                        <Label Text="3/20/23 21:04"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Num samples in buffer:"/>
+                        <Label Text="0"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="Last buffer flush:"/>
+                        <Label Text="3/20/23 21:04"/>
+                    </FlexLayout>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                        <Label Text="NetAPI response:"/>
+                        <Label Text="OK"/>
+                    </FlexLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
